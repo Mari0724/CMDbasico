@@ -21,6 +21,7 @@
   "dependencies": {
     "@prisma/client": "^6.6.0",
     "body-parser": "^2.2.0",
+    "cmdbasico": "file:",
     "express": "^5.1.0"
   },
   "devDependencies": {
