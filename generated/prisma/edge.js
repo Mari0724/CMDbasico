@@ -1,4 +1,3 @@
-
 Object.defineProperty(exports, "__esModule", { value: true });
 
 const {
@@ -200,7 +199,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\emili\\Downloads\\cmdbasico\\generated\\prisma",
+      "value": "C:\\Users\\USER\\Music\\cmdbasico\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -214,7 +213,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\emili\\Downloads\\cmdbasico\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\USER\\Music\\cmdbasico\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -261,4 +260,3 @@ if (typeof globalThis !== 'undefined' && globalThis['DEBUG'] || typeof process !
 const PrismaClient = getPrismaClient(config)
 exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
-
