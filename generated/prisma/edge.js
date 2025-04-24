@@ -200,7 +200,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\SENA\\Music\\cmdbasico\\generated\\prisma",
+      "value": "C:\\Users\\emili\\Downloads\\cmdbasico\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -214,11 +214,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\SENA\\Music\\cmdbasico\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\emili\\Downloads\\cmdbasico\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../.env"
   },
   "relativePath": "../../prisma",
@@ -228,11 +228,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://postgres:123456@localhost:5432/cmd?schema=public"
+        "value": null
       }
     }
   },

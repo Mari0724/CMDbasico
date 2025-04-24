@@ -1,15 +1,12 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import bodyParser from 'body-parser';
-
+import prisma from './prismaClient'; // cliente separado
+import { Stage } from '@prisma/client';
 
 const app = express();
-
-
-// Middlewares
 app.use(bodyParser.json());
 
-// Headers personalizados
-app.use((req, res, next) => {
+app.use((_req, res, next) => {
     res.header('X-Custom-Header', 'CRM-Express');
     next();
 });
@@ -19,9 +16,100 @@ app.get('/', (_req, res) => {
     res.json({ message: '¡Bienvenido al CRM con Express y Prisma!' });
 });
 
-// Iniciar servidor
-const PORT = 3000
-app.listen(PORT, () => {
-    // abre el localhost:3000
-    console.log(`El server corre bien http://localhost:${PORT}`,);
+//Funcionalidad del ORM:
+// Consultar todos los contactos
+app.get('/contactos', async (_req, res) => {
+    try {
+        const contactos = await prisma.contact.findMany();
+        res.json(contactos);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener contactos' });
+    }
 });
+
+// Buscar un contacto por ID.
+app.get('/contactos/:id', async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id);
+    try {
+        const contacto = await prisma.contact.findUnique({ where: { id } });
+        if (contacto) res.json(contacto);
+        else res.status(404).json({ error: 'Contacto no encontrado.' });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al buscar el contacto.' });
+    }
+});
+
+// Crear una nueva oportunidad
+app.post('/oportunidades', async (req: Request, res: Response) => {
+    const { name, description, estimatedValue, currency, stage, expectedCloseDate, companyId } = req.body;
+    try {
+        const nuevaOportunidad = await prisma.opportunity.create({
+            data: {
+                name,
+                description,
+                estimatedValue,
+                currency,
+                stage,
+                expectedCloseDate: new Date(expectedCloseDate),
+                company: { connect: { id: companyId } },
+            },
+        });
+        res.status(201).json(nuevaOportunidad);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al crear la oportunidad.' });
+    }
+});
+
+// Listar oportunidades por etapa (stage)
+app.get('/listopor', async (req: Request, res: Response) => {
+    const { stage } = req.query;
+    try {
+        const oportunidades = await prisma.opportunity.findMany({
+            where: { stage: stage as Stage },
+        });
+        res.json(oportunidades);
+    } catch (error) {
+        res.status(500).json({ error: 'No se pudieron obtener las oportunidades.' });
+    }
+});
+
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`El server corre bien en http://localhost:${PORT}`);
+    //crearOportunidadEjemplo();
+});
+
+
+/* 
+FUNCIÓN DE PRUEBA - Instrucciones para ejecutar correctamente:
+(primero quitar el formato comentario de la funcion y arriba al "crearOportunidadEjemplo();")
+1 Asegúrate de que el servidor NO esté corriendo (si lo ejecutaste con npm run dev, deténlo con Ctrl + C).
+2 Guarda este archivo si hiciste cambios (Ctrl + S).
+3 Ejecuta el archivo directamente con el siguiente comando en la terminal:
+    npx ts-node src/server.ts
+
+Esto insertará datos de prueba en la base de datos (puedes comprobarlo en pgAdmin4).
+Si deseas cambiar los datos, modifica las variables, guarda, y repite los pasos.
+*/
+
+async function crearOportunidadEjemplo() {
+    try {
+        const oportunidad = await prisma.opportunity.create({
+            data: {
+                name: "Hola Yusef",
+                description: "Funcion de prueva ",
+                estimatedValue: 93945.67,
+                currency: "COP",
+                stage: "won",
+                expectedCloseDate: new Date("2025-04-24"),
+                company: {
+                    connect: { id: 3 }, 
+                },
+            },
+        });
+        console.log(" Oportunidad creada:", oportunidad);
+    } catch (error) {
+        console.error(" Error al crear la oportunidad:", error);
+    }
+}
