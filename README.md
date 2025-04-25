@@ -96,5 +96,5 @@ Proyecto académico para práctica backend CRM
 ## 📄 Documentación y Planeación
 
 La planeación del proyecto (cronograma, tareas, objetivos) está disponible en GitHub Pages:  
-🔗 https://TU-USUARIO.github.io/crm-planeacion/
+🔗 https://mari0724.github.io/CMDbasico/
 
