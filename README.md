@@ -4,7 +4,7 @@ Este proyecto es un backend simple para un sistema CRM, desarrollado por *Maria 
 
 ---
 
-## 📁 Estructura general del Proyecto
+## 📁 Estructura General del Proyecto
 
 
 📦 raiz/
@@ -84,7 +84,6 @@ Este proyecto es un backend simple para un sistema CRM, desarrollado por *Maria 
 - *TSOA* + *Swagger* para documentación API (opcional)
 - *Nodemon* para desarrollo
 
----
 
 ## 👩‍💻 Autoras
 
@@ -97,4 +96,4 @@ Proyecto académico para práctica backend CRM
 ## 📄 Documentación y Planeación
 
 La planeación del proyecto (cronograma, tareas, objetivos) está disponible en GitHub Pages:  
-🔗 https://TU-USUARIO.github.io/crm-planeacion/
+🔗 https://mari0724.github.io/CMDbasico/
