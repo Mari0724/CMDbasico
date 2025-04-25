@@ -2,9 +2,16 @@ import express, { Request, Response, NextFunction } from 'express';
 import bodyParser from 'body-parser';
 import prisma from './prismaClient'; // cliente separado
 import { Stage } from '@prisma/client';
+import { RegisterRoutes } from "../src/routes/routes"; // este se genera automáticamente
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "../docs/swagger.json";
 
 const app = express();
 app.use(bodyParser.json());
+
+RegisterRoutes(app);
+
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use((_req, res, next) => {
     res.header('X-Custom-Header', 'CRM-Express');

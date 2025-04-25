@@ -1,0 +1,229 @@
+{
+	"openapi": "3.0.0",
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"_36_Enums.Status": {
+				"type": "string",
+				"enum": [
+					"active",
+					"inactive"
+				]
+			},
+			"ContactDTO": {
+				"properties": {
+					"companyId": {
+						"type": "number",
+						"format": "double"
+					},
+					"firstName": {
+						"type": "string"
+					},
+					"lastName": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"position": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"active",
+							"inactive"
+						]
+					}
+				},
+				"required": [
+					"companyId",
+					"firstName",
+					"lastName",
+					"email",
+					"phone",
+					"position",
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "cmdbasico",
+		"version": "1.0.0",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "@mariaximena0724 y emilia"
+		}
+	},
+	"paths": {
+		"/contacts": {
+			"get": {
+				"operationId": "GetContacts",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"properties": {
+											"status": {
+												"$ref": "#/components/schemas/_36_Enums.Status"
+											},
+											"updated_at": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"created_at": {
+												"type": "string",
+												"format": "date-time"
+											},
+											"position": {
+												"type": "string"
+											},
+											"phone": {
+												"type": "string"
+											},
+											"email": {
+												"type": "string"
+											},
+											"lastName": {
+												"type": "string"
+											},
+											"firstName": {
+												"type": "string"
+											},
+											"companyId": {
+												"type": "number",
+												"format": "double"
+											},
+											"id": {
+												"type": "number",
+												"format": "double"
+											}
+										},
+										"required": [
+											"status",
+											"updated_at",
+											"created_at",
+											"position",
+											"phone",
+											"email",
+											"lastName",
+											"firstName",
+											"companyId",
+											"id"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Contacts"
+				],
+				"security": [],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "CreateContact",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"status": {
+											"$ref": "#/components/schemas/_36_Enums.Status"
+										},
+										"updated_at": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"created_at": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"position": {
+											"type": "string"
+										},
+										"phone": {
+											"type": "string"
+										},
+										"email": {
+											"type": "string"
+										},
+										"lastName": {
+											"type": "string"
+										},
+										"firstName": {
+											"type": "string"
+										},
+										"companyId": {
+											"type": "number",
+											"format": "double"
+										},
+										"id": {
+											"type": "number",
+											"format": "double"
+										}
+									},
+									"required": [
+										"status",
+										"updated_at",
+										"created_at",
+										"position",
+										"phone",
+										"email",
+										"lastName",
+										"firstName",
+										"companyId",
+										"id"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Contacts"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ContactDTO"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
