@@ -115,8 +115,8 @@ Proyecto académico para práctica backend CRM
 
 ---
 
-## 📄 Documentación y Planeación
+## 📄 Documentación
 
-La planeación del proyecto está disponible en GitHub Pages:  
+Disponible en GitHub Pages:  
 🔗 https://mari0724.github.io/CMDbasico/
 
