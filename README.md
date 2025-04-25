@@ -6,20 +6,26 @@ Este proyecto es un backend simple para un sistema CRM, desarrollado por *Maria 
 
 ## 📁 Estructura General del Proyecto
 
-
 📦 raiz/
+├── 📁 docs/              # Documentación del proyecto (Swagger UI)
+│   ├── 📄 index.html     # Interfaz Swagger UI
+│   └── 📄 swagger.json   # Especificación OpenAPI generada
 ├── 📁 prisma/            # Esquema de base de datos Prisma y migraciones
+│   ├── 📁 migrations/    # Historial de migraciones Prisma
+│   └── 📄 schema.prisma  # Definición del modelo de datos
 ├── 📁 src/
 │   ├── 📁 controllers/   # Lógica de controladores
 │   ├── 📁 routes/        # Rutas de la API
 │   ├── 📁 models/        # Validaciones y tipos (Zod, DTOs)
-│   ├── prismaClient.ts  # Instancia compartida de Prisma Client
-│   └── server.ts        # Configuración principal del servidor
+│   ├── 📄 prismaClient.ts  # Instancia compartida de Prisma Client
+│   └── 📄 server.ts      # Configuración principal del servidor
 ├── 📄 .env               # Variables de entorno 
 ├── 📄 .gitignore         # Ignora node_modules, .env, etc.
-├── 📄 package.json
-└── 📄 README.md
-
+├── 📄 package.json       # Dependencias y scripts
+├── 📄 package-lock.json  # Versión exacta de dependencias
+├── 📄 README.md          # Documentación principal
+├── 📄 tsconfig.json      # Configuración de TypeScript
+└── 📄 tsoa.json          # Configuración de TSOA
 
 ---
 
@@ -66,7 +72,18 @@ Este proyecto es un backend simple para un sistema CRM, desarrollado por *Maria 
 
    Esto utiliza nodemon para reiniciar automáticamente al guardar cambios.
 
-6. *Probar endpoints*
+6. *Generar rutas y documentación con TSOA*
+
+   Para generar las rutas y la documentación en formato Swagger, ejecuta los siguientes comandos:
+
+   ```bash
+   npx tsoa routes
+   npx tsoa spec
+   npx tsoa routes: Genera las rutas para la API.
+
+   npx tsoa spec: Genera la especificación de la API en formato Swagger.```
+
+7. *Probar endpoints*
 
    - GET /contactos → Lista todos los contactos
    - GET /contactos/:id → Obtiene un contacto por ID
@@ -95,5 +112,5 @@ Proyecto académico para práctica backend CRM
 
 ## 📄 Documentación y Planeación
 
-La planeación del proyecto (cronograma, tareas, objetivos) está disponible en GitHub Pages:  
+La planeación del proyecto está disponible en GitHub Pages:  
 🔗 https://mari0724.github.io/CMDbasico/
