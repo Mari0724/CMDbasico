@@ -46,7 +46,7 @@ app.get('/contactos/:id', async (req: Request, res: Response) => {
     }
 });
 
-// Crear una nueva oportunidad
+// Crear una nueva oportunidad (en la parte final esta una funcion de prueva, para que pueda verificar su funcionalidad)
 app.post('/oportunidades', async (req: Request, res: Response) => {
     const { name, description, estimatedValue, currency, stage, expectedCloseDate, companyId } = req.body;
     try {
