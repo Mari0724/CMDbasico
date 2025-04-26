@@ -13,19 +13,19 @@ RegisterRoutes(app);
 
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.use((_req, res, next) => {
+app.use((req: Request, res: Response, next: NextFunction) => {
     res.header('X-Custom-Header', 'CRM-Express');
     next();
 });
 
 // Ruta raíz
-app.get('/', (_req, res) => {
+app.get('/', (req: Request, res: Response) => {
     res.json({ message: '¡Bienvenido al CRM con Express y Prisma!' });
 });
 
 //Funcionalidad del ORM
 // Consultar todos los contactos
-app.get('/contactos', async (_req, res) => {
+app.get('/contactos', async (req: Request, res: Response) => {
     try {
         const contactos = await prisma.contact.findMany();
         res.json(contactos);
